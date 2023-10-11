@@ -6,8 +6,8 @@ import org.springframework.messaging.simp.stomp.StompHeaderAccessor;
 import org.springframework.stereotype.Component;
 import org.springframework.web.socket.messaging.SessionDisconnectEvent;
 
-import com.example.jwt.util.webSocket.type.ChatMessage;
-import com.example.jwt.util.webSocket.type.MessageType;
+import com.example.jwt.util.webSocket.dto.response.ChatMessage;
+import com.example.jwt.util.webSocket.type.e.MessageType;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;

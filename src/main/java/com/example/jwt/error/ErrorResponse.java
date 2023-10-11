@@ -6,6 +6,7 @@ import com.example.jwt.type.i.auth.AuthenticateInterface;
 import com.example.jwt.type.i.auth.LogoutInterface;
 import com.example.jwt.type.i.auth.RefreshTokenInterface;
 import com.example.jwt.type.i.auth.RegisterInterface;
+import com.example.jwt.util.webSocket.type.i.WebSocketMessageInterface;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -20,6 +21,7 @@ public class ErrorResponse
         implements RefreshTokenInterface,
         LogoutInterface,
         RegisterInterface,
-        AuthenticateInterface {
+        AuthenticateInterface, 
+        WebSocketMessageInterface {
     private Map<String, String> errors;
 }

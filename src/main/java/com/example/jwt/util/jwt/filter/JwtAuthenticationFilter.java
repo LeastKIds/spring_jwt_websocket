@@ -39,7 +39,7 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
     protected void doFilterInternal(@NonNull HttpServletRequest request, @NonNull HttpServletResponse response, @NonNull FilterChain filterChain)
             throws ServletException, IOException {
         String requestURI = request.getRequestURI();
-        if (requestURI.startsWith("/api/v1/auth/")) {
+        if (requestURI.startsWith("/api/v1/auth/") || requestURI.startsWith("/ws")) {
             // /api/v1/auth/로 시작하는 요청에 대해서는 필터의 로직을 건너뛰고 다음 필터로 진행
             filterChain.doFilter(request, response);
             return;
@@ -76,14 +76,6 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
             response.getWriter().write("{\"error\": \"Token has expired\"}");
             return;
         }
-
-        if(requestURI.startsWith("/ws")) {
-            // 소켓 연결의 경우 jwt 토큰의 쿠키값만 체크.
-            // websocket에는 헤더값을 첨부할 수 없기 때문
-            filterChain.doFilter(request, response);
-            return;
-        }
-
 
         final String authHeader = request.getHeader("Authorization");
 
